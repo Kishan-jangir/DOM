@@ -59,6 +59,10 @@ form.onsubmit = function(event){
     reqText.innerHTML =  "Username can't be empty !";
     confirmPasswordBox.append(reqText);
   }
+  
+  else if(passwordValue != confirmPasswordValue){
+    window.alert("Password Doesn't match !")
+  }
 
 }
 
@@ -77,6 +81,27 @@ form.onsubmit = function(event){
   -----------
 Ensure the ‘Register’ button is disabled until the user has entered valid data into all the input fields.  Once they have, the registration button should then be enabled.
 */
+
+function checkform()
+{
+    var f = document.forms["registrationForm"].elements;
+    var cansubmit = true;
+
+    for (var i = 0; i < f.length; i++) {
+        if (f[i].value.length == 0) {
+          cansubmit = false;
+        }
+    }
+
+    if (cansubmit) {
+        document.getElementById('submitbutton').disabled = false;
+    }
+
+    else {
+        document.getElementById('submitbutton').disabled = 'disabled';
+    }
+}
+
 
 
 /*
