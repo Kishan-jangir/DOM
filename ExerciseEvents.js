@@ -82,25 +82,31 @@ form.onsubmit = function(event){
 Ensure the ‘Register’ button is disabled until the user has entered valid data into all the input fields.  Once they have, the registration button should then be enabled.
 */
 
-function checkform()
-{
-    var f = document.forms["registrationForm"].elements;
-    var cansubmit = true;
+document.querySelector("#subbmitbutton").addEventListener("click",function(event){
+  console.log("Click detected on submitbutton");
 
-    for (var i = 0; i < f.length; i++) {
-        if (f[i].value.length == 0) {
-          cansubmit = false;
-        }
-    }
+  var f = document.forms["registrationForm"].elements;
+  var cansubmit = true;
 
-    if (cansubmit) {
-        document.getElementById('submitbutton').disabled = false;
-    }
+  for (var i = 0; i < f.length; i++) {
+      if (f[i].value.length == 0)
+        console.log(f[i].value.length);
+        cansubmit = false;
+  }
 
-    else {
-        document.getElementById('submitbutton').disabled = 'disabled';
-    }
-}
+  console.log(cansubmit);
+
+  if (cansubmit == false) {
+      document.getElementById('subbmitbutton').disabled = true;
+      console.log("Please fill complete Form ");
+  }
+
+  else {
+      console.log("Registration successful");
+      document.getElementById('subbmitbutton').disabled = false;
+  }
+
+});
 
 
 
